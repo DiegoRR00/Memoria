@@ -83,3 +83,4 @@ writer.goto(210, 210)
 writer.color('black')
 writer.write(num['taps'])
 done()
+
