@@ -3,7 +3,7 @@ from turtle import *
 from freegames import path
 #Variables inciales
 car = path('car.gif')
-tiles = list(range(2)) * 2
+tiles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#","$","%","&","+","-"]*2
 state = {'mark': None}
 hide = [True] * 64
 #Dibujar el cuadrado en coordenadas
@@ -66,7 +66,6 @@ def draw():
         return
     update()
     ontimer(draw, 100)
-
 shuffle(tiles)#Revolver fichas
 setup(420, 420, 370, 0)
 addshape(car)#Poner el carro en el fondo
