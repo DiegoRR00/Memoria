@@ -2,6 +2,7 @@ from random import *
 from turtle import *
 from freegames import path
 #Variables inciales
+num = {'taps': 0}
 car = path('car.gif')
 tiles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#","$","%","&","+","-"]*2
 state = {'mark': None}
@@ -29,12 +30,17 @@ def xy(count):
 #Registra entrada en el tablero
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    writer.undo()
+    writer.write(num['taps'])
+    
     spot = index(x, y)
     mark = state['mark']
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:#Primera selección
+        num['taps'] += 1
         state['mark'] = spot
     else:#Segunda selección
+        num['taps'] += 1
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
@@ -57,9 +63,9 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 26, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], align = 'center', font = ('Arial', 30, 'normal'))
     if True not in hide:#Si no queda nada oculto
         print("Se acabo")#Impriir en consola
         done()#Finalizar el ontimer
@@ -73,4 +79,8 @@ hideturtle()
 tracer(False)
 onscreenclick(tap)
 draw()
+writer.goto(210, 210)
+writer.color('black')
+writer.write(num['taps'])
 done()
+
