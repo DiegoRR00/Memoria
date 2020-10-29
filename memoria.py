@@ -3,6 +3,7 @@ from turtle import *
 from freegames import path
 #Variables inciales
 num = {'taps': 0}
+writer = Turtle(visible=False)
 car = path('car.gif')
 tiles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#","$","%","&","+","-"]*2
 state = {'mark': None}
@@ -73,7 +74,7 @@ def draw():
     update()
     ontimer(draw, 100)
 shuffle(tiles)#Revolver fichas
-setup(420, 420, 370, 0)
+setup(500, 500, 370, 0)
 addshape(car)#Poner el carro en el fondo
 hideturtle()
 tracer(False)
